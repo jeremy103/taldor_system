@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('mamale', 'DaddyController@getInfo');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

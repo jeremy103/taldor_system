@@ -1,95 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-        <title>Laravel</title>
+        <title>Taldor System</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css"> 
+        <link rel="stylesheet" href="{{ URL::asset('css\myCss.css') }}" />
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
-            @endif
 
-            <div class="content">
+            <div id='first' class="content" >
                 <div class="title m-b-md">
-                    Laravel
-                </div>
+                    Taldor-Systems - Made by BPO
+                    
+                </div> 
+                     <div class="container">
+                     Enter your ID Number: <input type="text" name="id" >
+                                &nbsp;
+                                <br>
+                                <br>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                                <button type="button" class="btn btn-primary" name="submitbutton">Submit</button>
+                                
+                    </div>
+                    
+            <span></span>
+            </div>
+            <div id='detailss' class="container" hidden>
+                    <table id='userTable' style='border-collapse: collapse;'>
+                        <thead>
+                            <tr>
+                            <th><h1>ID</h1></th>
+                            
+                            <th><h1>Name</h1></th>
+                            
+                            <th><h1>Last Name</h1></th>
+                            
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+
+                        </tbody>
+                        </table>
+
+                        <div id="webcam"></div>
+                        <div id="canvas"></div>
+                        <br>
+                        <a href="javascript:webcam.capture();void(0);">Take A Picture</a>
+                        
             </div>
         </div>
     </body>
 </html>
+
+<script type="text/javascript" src="{{ URL::to('js/sendinfoandrecive.js') }}"></script>
+
+<script type="text/javascript" src="{{ URL::to('js/jquery.webcam.min.js') }}"></script>
